@@ -1,0 +1,28 @@
+<app-content-container>
+  <div class="row section-margin">
+    <app-chart class="col-12"
+               [chartType]="ChartType.LINE"
+               [chartData]="lineChartData"
+               [labels]="chartLabels"
+               topLabel="Roczna"
+               mainLabel="Sprzedaż samochodów"
+               icon="icon-delivery-fast"
+               iconColor="#A93226"
+               color="#A93226">
+    </app-chart>
+  </div>
+
+  <h3 class="header">TOP 3 SAMOCHODY</h3>
+  <div class="row section-margin">
+    <app-car-card class="dashboard-car-card" *ngFor="let car of cars" [car]="car"></app-car-card>
+  </div>
+
+  <div class="row section-margin">
+    <div class="dashboard-data-card">
+      <app-tasks></app-tasks>
+    </div>
+    <div class="dashboard-data-card">
+      <app-table tableHeader="Dostępne samochody" [data]="carsData" [headers]="headers" [highlightRow]="true" (rowClicked)="rowClicked($event)"></app-table>
+    </div>
+  </div>
+</app-content-container>

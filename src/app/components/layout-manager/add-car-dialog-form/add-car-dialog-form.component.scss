@@ -1,0 +1,35 @@
+.form-container {
+  display: flex;
+  justify-content: space-between;
+
+  @media (max-width: 1500px) {
+    flex-direction: column;
+  }
+}
+
+img {
+  height: auto;
+  max-height: 300px;
+}
+
+.left-side, .right-side {
+  width: 100%;
+}
+
+.right-side {
+  display: flex;
+  align-items: center;
+
+  .image-area {
+    border: 1px dotted rgb(0 0 0 / 40%);
+    height: 300px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.submit-btn {
+  margin-top: 15px;
+}

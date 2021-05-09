@@ -1,0 +1,19 @@
+<app-card *ngIf="tableData">
+  <h4 header *ngIf="tableHeader" class="card-title">{{tableHeader}}</h4>
+  <div class="table-body" body [ngStyle]="{ 'max-height': tableBodyHeight }">
+    <table class="table">
+      <thead class="text-primary">
+      <tr>
+        <th *ngFor="let header of headers">{{header}}</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="single-row-pointer" [ngClass]="{'highlight' : highlightRow}" *ngFor="let tableData of data" (click)="singleRowClicked(tableData)">
+        <ng-container *ngFor="let singleRow of tableData.data">
+          <td *ngIf="singleRow.display">{{singleRow.value}}</td>
+        </ng-container>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</app-card>

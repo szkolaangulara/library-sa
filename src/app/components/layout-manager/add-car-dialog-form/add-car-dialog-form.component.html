@@ -1,0 +1,94 @@
+<h5 class="title">Dodaj nowy samochód</h5>
+
+<form *ngIf="form" [formGroup]="form">
+  <div class="form-container">
+    <div class="left-side">
+      <div class="row-input">
+        <div class="input-element space-right">
+          <app-input
+            label="Marka samochodu"
+            placeholder="np. Audi/BMW/Mercedes"
+            [parentFormControl]="getFormControl(FormControlName.BRAND)"
+            requiredErrorText="Marka jest wymagana"
+          ></app-input>
+        </div>
+        <div class="input-element space-both-side">
+          <app-input
+            label="Model samochodu"
+            placeholder="np. A6/Seria 3/E Klasa"
+            [parentFormControl]="getFormControl(FormControlName.MODEL)"
+            requiredErrorText="Model jest wymagany"
+          ></app-input>
+        </div>
+      </div>
+      <div class="row-input">
+        <div class="input-element space-right">
+          <app-input
+            label="Pojemność silnika w cm3"
+            placeholder="np. 3000"
+            [parentFormControl]="getFormControl(FormControlName.ENGINE_SIZE)"
+            requiredErrorText="Pojemność jest wymagana"
+            patternErrorText="Dozwolona wartość to liczba całkowita"
+          ></app-input>
+        </div>
+        <div class="input-element space-both-side">
+          <app-input
+            label="Moc (konie mechaniczne)"
+            placeholder="np. 450"
+            [parentFormControl]="getFormControl(FormControlName.HORSE_POWER)"
+            requiredErrorText="Moc jest wymagana"
+            patternErrorText="Dozwolona wartość to liczba całkowita"
+          ></app-input>
+        </div>
+      </div>
+      <div class="row-input">
+        <div class="input-element space-right">
+          <app-input
+            label="Data produkcji"
+            placeholder="np. 01.01.2021"
+            mask="00.00.0000"
+            [specialCharacters]="['.']"
+            [parentFormControl]="getFormControl(FormControlName.PRODUCTION_DATE)"
+            requiredErrorText="Data produkcji jest wymagany"
+            patternErrorText="Niepoprawna data"
+          ></app-input>
+        </div>
+        <div class="input-element space-both-side">
+          <app-input
+            label="Przebieg"
+            placeholder="np. 123431"
+            [parentFormControl]="getFormControl(FormControlName.MILEAGE)"
+            requiredErrorText="Przebieg jest wymagany"
+            patternErrorText="Dozwolona wartość to liczba całkowita"
+          ></app-input>
+        </div>
+      </div>
+      <div class="row-input">
+        <div class="input-element space-right">
+          <app-input
+            label="Cena"
+            placeholder="np. 185000"
+            [parentFormControl]="getFormControl(FormControlName.PRICE)"
+            requiredErrorText="Cena jest wymagana"
+            patternErrorText="Dozwolona wartość to liczba całkowita"
+          ></app-input>
+        </div>
+        <div class="input-element space-both-side">
+          <label for="fuelType">Rodzaj paliwa</label>
+          <select id="fuelType" class="form-control" [formControlName]="FormControlName.FUEL_TYPE">
+            <option class="form-control-option" value="gasoline">Benzyna</option>
+            <option class="form-control-option" value="diesel">Diesel</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="right-side">
+      <div class="image-area">
+        <img [src]="imgURL" *ngIf="imgURL">
+      </div>
+    </div>
+  </div>
+  <app-file-uploader (filesAdded)="handleAddedFile($event)"></app-file-uploader>
+  <button class="btn btn-fill btn-danger submit-btn" [disabled]="isBtnDisabled" (click)="submit()">Dodaj samochód</button>
+</form>
+

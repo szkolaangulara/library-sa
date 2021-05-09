@@ -1,0 +1,53 @@
+<app-card *ngIf="(dailyTasks$ | async) as dailyTasks" cardBodyHeight="300px">
+  <ng-container header>
+    <div class="task-headers">
+      <h6 class="title">Zadania na dziś ({{dailyTasks.length}})</h6>
+      <div ngbDropdown>
+        <button
+          class="btn btn-link btn-icon"
+          data-toggle="dropdown"
+          ngbDropdownToggle
+          type="button">
+
+          <i class="tim-icons icon-settings-gear-63"> </i>
+        </button>
+        <div
+          aria-labelledby="dropdownMenuLink"
+          class="dropdown-menu-right"
+          ngbDropdownMenu>
+
+          <a href="javascript:void(0)" ngbDropdownItem> Action </a>
+          <a href="javascript:void(0)" ngbDropdownItem> Another action </a>
+          <a href="javascript:void(0)" ngbDropdownItem> Something else </a>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container body>
+    <div class="table-full-width">
+      <table class="table">
+        <tbody>
+        <tr *ngFor="let task of dailyTasks">
+          <td>
+            <p class="title">{{task.name}}</p>
+            <p class="text-muted">
+              {{task.description}}
+            </p>
+          </td>
+          <td class="action-buttons">
+            <button (click)="rejectTask(task)" class="btn btn-link" type="button" placement="left" ngbTooltip="Odrzuć zadanie" container="body">
+              <i class="tim-icons icon-simple-remove cancel-icon"></i>
+            </button>
+            <button (click)="completeTask(task)" class="btn btn-link" type="button" placement="left" ngbTooltip="Wykonaj zadanie" container="body">
+              <i class="tim-icons icon-check-2 checked-icon"></i>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </ng-container>
+  <ng-container footer>
+    <button class="btn btn-fill btn-danger" (click)="addTask()">Nowe zadanie</button>
+  </ng-container>
+</app-card>

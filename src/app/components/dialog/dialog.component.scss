@@ -1,0 +1,43 @@
+.overlay {
+  display: flex;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgb(0, 0, 0, 0.9);
+  z-index: 9999999;
+}
+
+.dialog {
+  position: relative;
+  width: 50%;
+  display: flex;
+  padding: 20px;
+  overflow-y: auto;
+  max-height: 90%;
+  margin: 0;
+
+  @media (max-width: 992px) {
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+  }
+}
+
+.close-btn {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  z-index: 9999999;
+  color: red;
+  font-weight: 900;
+  font-size: 18px;
+  cursor: pointer;
+
+  &:hover {
+    color: darkred;
+  }
+}

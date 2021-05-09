@@ -1,0 +1,23 @@
+<app-card [cardImageSource]="car?.photoSource">
+  <ng-container header [ngTemplateOutlet]="carAvailability"></ng-container>
+  <ng-container body>
+    <p>{{ car.brand | uppercase }} {{ car.model }}</p>
+    <p>{{ car.date | date: 'shortDate' }}</p>
+    <p>{{ car.price | localeCurrency }}</p>
+
+    <ng-container [ngTemplateOutlet]="carAvailability"></ng-container>
+  </ng-container>
+
+  <ng-container *ngIf="displayFooter" footer>
+    <button class="btn btn-fill btn-danger" (click)="moreInfo()">Więcej informacji</button>
+  </ng-container>
+</app-card>
+
+<ng-template #carAvailability>
+  <p *ngIf="car.price < 200000; else carOnDemand">
+    SAMOCHÓD DOSTĘPNY
+  </p>
+  <ng-template #carOnDemand>
+    <p>SAMOCHÓD NA ZAMÓWIENIE</p>
+  </ng-template>
+</ng-template>

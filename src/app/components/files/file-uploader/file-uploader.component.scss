@@ -1,0 +1,51 @@
+.border-upload-box {
+  border-radius: 7px;
+  text-align: center;
+  padding: 30px;
+  transition: all 0.2s ease-in-out;
+  border: 1px dotted #000000;
+}
+
+.file-list {
+  margin-top: 10px;
+
+  .uploaded-file-container {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.remove-btn {
+  color: red;
+  cursor: pointer;
+  margin-left: 5px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.hide-native-input {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  cursor: pointer;
+}
+
+::-webkit-file-upload-button {
+  cursor: pointer;
+}
+
+.add-btn {
+  position: relative;
+  background-color: orangered;
+
+  .add-btn-label {
+    margin: 0;
+    font-size: 20px !important;
+    color: white !important;
+  }
+}

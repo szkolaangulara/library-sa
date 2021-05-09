@@ -1,0 +1,30 @@
+<label [for]="inputId">{{label}}</label>
+<input [id]="inputId"
+       [formControl]="parentFormControl"
+       class="form-control"
+       [placeholder]="placeholder"
+       [mask]="mask"
+       [dropSpecialCharacters]="dropSpecialCharacters"
+       [specialCharacters]="specialCharacters"
+       type="text"
+       [ngClass]="{ 'is-invalid': isFormControlInvalid() }"/>
+
+<div *ngIf="parentFormControl.hasError('required')"
+     class="invalid-feedback">
+  <div>{{requiredErrorText}}</div>
+</div>
+
+<div *ngIf="parentFormControl.hasError('minlength')"
+     class="invalid-feedback">
+  <div>{{minLengthErrorText}}</div>
+</div>
+
+<div *ngIf="parentFormControl.hasError('maxlength')"
+     class="invalid-feedback">
+  <div>{{maxLengthErrorText}}</div>
+</div>
+
+<div *ngIf="parentFormControl.hasError('pattern')"
+     class="invalid-feedback">
+  <div>{{patternErrorText}}</div>
+</div>

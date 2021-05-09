@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/theming";
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+* ::-webkit-scrollbar {
+  width: 10px; /* width of the entire scrollbar */
+}
+
+* ::-webkit-scrollbar-track {
+  background: transparent; /* color of the tracking area */
+}
+
+* ::-webkit-scrollbar-thumb {
+  background-color: gray; /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+  border: 1px solid gray; /* creates padding around scroll thumb */
+}
+
+@include mat-core();
+$angular-primary: mat-palette($mat-teal, 500, 100, 900);
+$angular-accent: mat-palette($mat-pink, A200, A100, A400);
+$angular-warn: mat-palette($mat-red);
+
+$angular-dark-theme: mat-dark-theme(
+    (
+      color: (
+        primary: $angular-primary,
+        accent: $angular-accent,
+        warn: $angular-warn,
+      ),
+    )
+);
+
+@include angular-material-theme($angular-dark-theme);
+
+@mixin setWidthDependsOnResolution($width, $margin, $resolution) {
+  @media (max-width: #{$resolution}) {
+    width: calc(#{$width} - 2 * #{$margin});
+  }
+}

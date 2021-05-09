@@ -1,0 +1,22 @@
+<form *ngIf="form" [formGroup]="form">
+  <div class="form-container">
+    <div class="row-input">
+      <div class="input-element space-right">
+        <app-input
+          label="Nazwa zadania"
+          [parentFormControl]="getFormControl(FormControlName.NAME)"
+          requiredErrorText="Nazwa jest wymagana"
+        ></app-input>
+      </div>
+    </div>
+    <div class="row-input">
+      <div class="input-element space-right">
+        <app-text-area
+          label="Opis zadania"
+          [parentFormControl]="getFormControl(FormControlName.DESCRIPTION)"
+        ></app-text-area>
+      </div>
+    </div>
+  </div>
+  <button [disabled]="isBtnDisabled" class="btn btn-fill btn-danger" (click)="addNewTask()">Dodaj zadanie</button>
+</form>

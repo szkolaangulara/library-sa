@@ -1,0 +1,27 @@
+@import 'src/styles';
+
+.card-center {
+  display: flex;
+  justify-content: center;
+}
+
+.card-image {
+  width: 300px;
+}
+
+.image-area {
+  border: 1px dotted rgb(0 0 0 / 40%);
+  height: 300px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.file-card {
+  width: calc(33.3% - 20px);
+  margin: 10px;
+
+  @include setWidthDependsOnResolution(50%, 10px, 1600px);
+  @include setWidthDependsOnResolution(100%, 10px, 1200px);
+}

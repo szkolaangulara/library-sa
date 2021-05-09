@@ -1,0 +1,57 @@
+<app-card cardCustomClass="card-user" cardHeight="auto" minHeight="435px">
+  <div body>
+    <p class="card-text"></p>
+    <div class="author">
+      <div class="block block-one"></div>
+      <div class="block block-two"></div>
+      <div class="block block-three"></div>
+      <div class="block block-four"></div>
+
+      <img class="avatar" src="{{avatarImag}}"/>
+      <h5 class="title">{{userName}}</h5>
+      <p class="description">{{userPosition}}</p>
+    </div>
+    <div class="card-description">
+      {{userDescription}}
+    </div>
+  </div>
+  <ng-container footer>
+    <div class="button-container">
+      <button (click)="soldCars()" class="btn btn-icon btn-round">
+        <i class="tim-icons icon-bullet-list-67"> </i>
+      </button>
+      <button (click)="displaySalary()" class="btn btn-icon btn-round">
+        <i class="tim-icons icon-coins"> </i>
+      </button>
+      <button (click)="displayTasks()" class="btn btn-icon btn-round btn-google">
+        <i class="tim-icons icon-notes"> </i>
+      </button>
+    </div>
+
+    <ng-container *ngIf="shouldDisplaySoldCarsTable">
+      <app-table tableBodyHeight="210px"
+                 tableHeader="Sprzedane samochody"
+                 [data]="soldCarsTableData"
+                 [headers]="headers"
+                 [highlightRow]="true">
+      </app-table>
+    </ng-container>
+
+    <ng-container *ngIf="shouldDisplayChart">
+      <app-chart class="chart-card-2"
+                 [chartType]="ChartType.LINE"
+                 [chartData]="salaries"
+                 [labels]="labels"
+                 topLabel="Miesięczne"
+                 mainLabel="Wynagrodzenia"
+                 color="#52BE80"
+                 icon="icon-money-coins"
+                 iconColor="green">
+      </app-chart>
+    </ng-container>
+
+    <ng-container *ngIf="shouldDisplayTasks">
+      <app-tasks></app-tasks>
+    </ng-container>
+  </ng-container>
+</app-card>

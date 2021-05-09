@@ -1,0 +1,14 @@
+.card-chart {
+  min-height: 350px;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-title {
+  white-space: nowrap;
+}

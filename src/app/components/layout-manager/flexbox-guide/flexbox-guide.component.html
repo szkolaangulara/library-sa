@@ -1,0 +1,41 @@
+<div class="radio-menu card">
+  <div class="inputs-container">
+    <div>
+      <label for="carAmount">Wprowadź liczbę kart</label>
+      <input id="carAmount" class="form-control" type="number" [(ngModel)]="cardAmount">
+    </div>
+    <div>
+      <label for="carCardWidth">Wprowadź szerokość karty</label>
+      <input id="carCardWidth" class="form-control" type="text" [(ngModel)]="cardWidth">
+    </div>
+  </div>
+
+  <label for="carAmount">Ułożenie kart poziomo</label>
+  <div class="menu-element">
+    <input name="flex-justify-content" [(ngModel)]="radioValue" value="flex-start" type="radio">FLEX-START
+    <input name="flex-justify-content" [(ngModel)]="radioValue" value="flex-end" type="radio">FLEX-END
+    <input name="flex-justify-content" [(ngModel)]="radioValue" value="center" type="radio">CENTER
+    <input name="flex-justify-content" [(ngModel)]="radioValue" value="space-between" type="radio">SPACE BETWEEN
+    <input name="flex-justify-content" [(ngModel)]="radioValue" value="space-around" type="radio">SPACE AROUND
+  </div>
+  <label for="carAmount">Ułożenie kart pionowo</label>
+  <div class="menu-element">
+    <input name="flex-justify-content-y" [(ngModel)]="radioValueY" value="flex-start" type="radio">FLEX-START
+    <input name="flex-justify-content-y" [(ngModel)]="radioValueY" value="flex-end" type="radio">FLEX-END
+    <input name="flex-justify-content-y" [(ngModel)]="radioValueY" value="center" type="radio">CENTER
+    <input name="flex-justify-content-y" [(ngModel)]="radioValueY" value="space-between" type="radio">SPACE BETWEEN
+    <input name="flex-justify-content-y" [(ngModel)]="radioValueY" value="space-around" type="radio">SPACE AROUND
+  </div>
+  <div class="menu-element">
+    <button class="btn btn-fill btn-danger" (click)="addNewCar()">Dodaj nowy samochód</button>
+  </div>
+
+</div>
+
+<div class="flex-container" [ngStyle]="{'justify-content': radioValue, 'align-content': radioValueY}">
+  <app-car-card class="flex-card"
+                *ngFor="let car of cars.reverse().slice(0, cardAmount)"
+                [car]="car"
+                [ngStyle]="{'width': cardWidth}">
+  </app-car-card>
+</div>

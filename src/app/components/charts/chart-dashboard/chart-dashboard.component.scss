@@ -1,0 +1,21 @@
+.chart-card-3 {
+  margin: 10px;
+  width: calc(33.3333% - 20px);
+
+  @media (max-width: 1200px) {
+    width: calc(50% - 20px);
+  }
+
+  @media (max-width: 650px) {
+    width: calc(100% - 20px);
+  }
+}
+
+.chart-card-2 {
+  margin: 10px;
+  width: calc(50% - 20px);
+
+  @media (max-width: 1200px) {
+    width: calc(100% - 20px);
+  }
+}

@@ -1,0 +1,31 @@
+<app-content-container>
+  <div class="row">
+    <app-card class="file-card">
+      <ng-container body>
+        <div class="image-area">
+          <img [src]="imgURL" *ngIf="imgURL">
+        </div>
+        <app-file-uploader
+          header="Dodaj zdjęcie samochodu"
+          (filesAdded)="handleAdditionalFilesAdded($event)">
+        </app-file-uploader>
+      </ng-container>
+    </app-card>
+
+    <app-card class="file-card">
+      <ng-container header>
+        Pobierz plik
+      </ng-container>
+      <ng-container body>
+        <div class="card-center">
+          <img class="card-image" src="https://www.szkolaangulara.pl/wp-content/uploads/2019/12/angular-book.png"/>
+        </div>
+      </ng-container>
+      <ng-container footer>
+        <div class="card-center">
+          <button class="btn btn-danger add-btn" (click)="downloadFile()">Pobierz plik</button>
+        </div>
+      </ng-container>
+    </app-card>
+  </div>
+</app-content-container>

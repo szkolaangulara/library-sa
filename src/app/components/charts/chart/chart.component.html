@@ -1,0 +1,13 @@
+<app-card class="card-chart">
+  <ng-container *ngIf="topLabel || mainLabel" header>
+    <h5 class="card-category">{{topLabel}}</h5>
+    <h2 class="card-title">
+      <i *ngIf="icon" [ngStyle]="{'color': iconColor}" class="tim-icons {{icon}}"></i> {{mainLabel}}
+    </h2>
+  </ng-container>
+  <ng-container body>
+    <div class="chart-area">
+      <canvas #myCanvas></canvas>
+    </div>
+  </ng-container>
+</app-card>

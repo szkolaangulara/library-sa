@@ -1,0 +1,34 @@
+div.section-margin:last-of-type, div.section-margin:first-of-type {
+  margin: 0;
+}
+
+.section-margin {
+  margin: 20px 0;
+}
+
+.header {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.dashboard-car-card {
+  margin: 10px;
+  width: calc(33.3333% - 20px);
+
+  @media (max-width: 1200px) {
+    width: calc(50% - 20px);
+  }
+
+  @media (max-width: 650px) {
+    width: calc(100% - 20px);
+  }
+}
+
+.dashboard-data-card {
+  margin: 10px;
+  width: calc(50% - 20px);
+
+  @media (max-width: 1200px) {
+    width: calc(100% - 20px);
+  }
+}

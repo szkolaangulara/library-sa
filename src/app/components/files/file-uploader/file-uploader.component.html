@@ -1,0 +1,21 @@
+<p *ngIf="header">
+  {{header}}
+</p>
+
+<div appDragAndDropFile [allowMultipleFiles]="allowMultipleFiles" [maxFilesAmount]="maxFilesAmount"
+     (fileDropped)="fileDropped($event)" class="border-upload-box">
+  <h4>Przeciągnij plik</h4>
+  <p>lub</p>
+  <button class="btn btn-danger add-btn">
+    <label class="add-btn-label" [for]="fileInputId">Dodaj plik</label>
+    <input class="hide-native-input" [id]="fileInputId" type="file" (change)="handleFileChange($event)"
+           [multiple]="allowMultipleFiles"/>
+  </button>
+  <div *ngIf="files.length > 0" class="file-list">
+    <div class="uploaded-file-container" *ngFor="let file of files">
+      <p class="ellipsis">{{file.name}}</p>
+      <p (click)="removeFile(file)" class="remove-btn">x</p>
+    </div>
+  </div>
+</div>
+

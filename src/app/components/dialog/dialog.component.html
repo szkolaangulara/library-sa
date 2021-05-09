@@ -1,0 +1,6 @@
+<div class="overlay" (click)="onOverlayClick($event)">
+  <div class="card dialog" (click)="onDialogClick($event)">
+    <ng-container #childComponentPlacement></ng-container>
+    <span class="close-btn" (click)="closeDialog()">X</span>
+  </div>
+</div>

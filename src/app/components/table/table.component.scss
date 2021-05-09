@@ -1,0 +1,21 @@
+.table-card {
+  border-radius: 15px;
+  padding: 5px;
+  min-height: 250px;
+  min-width: 250px;
+  position: relative;
+  margin-bottom: 0;
+  height: 100%;
+}
+
+.table-body {
+  overflow: auto;
+}
+
+.highlight:hover {
+  background-color: dimgray;
+}
+
+.single-row-pointer {
+  cursor: pointer;
+}

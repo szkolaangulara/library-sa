@@ -1,0 +1,14 @@
+<div class="card {{cardCustomClass}}" [ngStyle]="{'height' : cardHeight, 'minHeight': minHeight }">
+  <div *ngIf="shouldDisplayHeader" #header class="card-header">
+    <ng-content select="[header]"></ng-content>
+  </div>
+  <img *ngIf="cardImageSource" [src]="cardImageSource"/>
+  <div *ngIf="shouldDisplayBody" #body class="card-body"
+       [ngClass]="{ 'card-body-overflow' : cardBodyHeight }"
+       [ngStyle]="{ 'height' : cardBodyHeight }">
+    <ng-content select="[body]"></ng-content>
+  </div>
+  <div *ngIf="shouldDisplayFooter" #footer class="card-footer">
+    <ng-content select="[footer]"></ng-content>
+  </div>
+</div>

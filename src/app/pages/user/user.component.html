@@ -1,0 +1,33 @@
+<app-content-container>
+  <div class="row">
+    <app-user-card class="col-lg-4"
+                   avatarImag="assets/img/james.jpg"
+                   userName="Jan Kowalski"
+                   userPosition="Key Account Manager"
+                   userDescription="Jan pracuje z nami od 3 lat. Jeden z lepszych pracowników. Specjalizuje się w sprzedaży samochodów sportowych"
+                   [soldCarsTableData]="carsData"
+                   [headers]="headers"
+                   [salaries]="janSalaries"
+    ></app-user-card>
+
+    <app-user-card class="col-lg-4"
+                   avatarImag="assets/img/emilyz.jpg"
+                   userName="Emila Nowak"
+                   userPosition="Sales"
+                   userDescription="Emilia pracuje z nami od 2 lat. Specjalizuje się w sprzedaży samochodów rodzinnych"
+                   [soldCarsTableData]="carsData"
+                   [headers]="headers"
+                   [salaries]="emiliaSalaries"
+    ></app-user-card>
+
+    <app-user-card class="col-lg-4"
+                   avatarImag="assets/img/mike.jpg"
+                   userName="Jarek Nowakiński"
+                   userPosition="Stażysta"
+                   userDescription="Jarek pracuje z nami od 2 miesięcy. Chce się specjalizować w kierunku sprzedaży samochodów SUV."
+                   [soldCarsTableData]="carsData"
+                   [headers]="headers"
+                   [salaries]="jarekSalaries"
+    ></app-user-card>
+  </div>
+</app-content-container>

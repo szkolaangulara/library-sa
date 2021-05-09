@@ -1,0 +1,17 @@
+.task-headers {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checked-icon {
+  color: green;
+}
+
+.cancel-icon {
+  color: red;
+}
+
+.action-buttons {
+  display: flex;
+}

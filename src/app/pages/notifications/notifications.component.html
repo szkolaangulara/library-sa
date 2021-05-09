@@ -1,0 +1,64 @@
+<app-content-container>
+  <div class="row">
+    <app-card class="col-12">
+      <ng-container body>
+        <div class=" places-buttons">
+          <div class=" row">
+            <div class=" col-md-6 ml-auto mr-auto text-center">
+              <h4 class=" card-title">Umieszczenie alertów</h4>
+              <p class=" category">Kliknij aby zobaczyć powiadomienie</p>
+            </div>
+          </div>
+          <div class=" row">
+            <div class=" col-lg-8 ml-auto mr-auto">
+              <div class=" row">
+                <div class=" col-md-4">
+                  <button class=" btn btn-danger btn-block"
+                          (click)="showNotification(AlertDirection.TOP, AlertAlign.LEFT)">
+                    Lewy górny róg
+                  </button>
+                </div>
+                <div class=" col-md-4">
+                  <button class=" btn btn-danger btn-block"
+                          (click)="showNotification(AlertDirection.TOP, AlertAlign.CENTER)">
+                    Góra środek
+                  </button>
+                </div>
+                <div class=" col-md-4">
+                  <button class=" btn btn-danger btn-block"
+                          (click)="showNotification(AlertDirection.TOP, AlertAlign.RIGHT)">
+                    Prawy górny róg
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class=" row">
+            <div class=" col-lg-8 ml-auto mr-auto">
+              <div class=" row">
+                <div class=" col-md-4">
+                  <button class=" btn btn-danger btn-block"
+                          (click)="showNotification(AlertDirection.BOTTOM, AlertAlign.LEFT)">
+                    Dolny lewy róg
+                  </button>
+                </div>
+                <div class=" col-md-4">
+                  <button class=" btn btn-danger btn-block"
+                          (click)="showNotification(AlertDirection.BOTTOM, AlertAlign.CENTER)">
+                    Dół środek
+                  </button>
+                </div>
+                <div class=" col-md-4">
+                  <button class=" btn btn-danger btn-block"
+                          (click)="showNotification(AlertDirection.BOTTOM, AlertAlign.RIGHT)">
+                    Prawy dolny róg
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </app-card>
+  </div>
+</app-content-container>
