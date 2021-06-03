@@ -1,23 +1,14 @@
 <app-card [cardImageSource]="car?.photoSource">
-  <ng-container header [ngTemplateOutlet]="carAvailability"></ng-container>
   <ng-container body>
-    <p>{{ car.brand | uppercase }} {{ car.model }}</p>
-    <p>{{ car.date | date: 'shortDate' }}</p>
-    <p>{{ car.price | localeCurrency }}</p>
-
-    <ng-container [ngTemplateOutlet]="carAvailability"></ng-container>
+    <app-card-single-info label="Marka" [value]="car.brand" icon="icon-world"></app-card-single-info>
+    <app-card-single-info label="Model" [value]="car.model" icon="icon-shape-star"></app-card-single-info>
+    <app-card-single-info label="Data produkcji" [value]="car.date | date: 'shortDate'" icon="icon-watch-time"></app-card-single-info>
+    <app-card-single-info label="Cena" [value]="car.price | localeCurrency" icon="icon-money-coins" iconColor="#3ba156"></app-card-single-info>
+    <app-card-single-info label="Cena za dobę" [value]="car.pricePerDay | localeCurrency" icon="icon-coins" iconColor="#3ba156"></app-card-single-info>
+    <app-card-single-info label="Status" [value]="car.status | carStatus" icon="icon-tag" [valueColor]="car.status | carStatusColor" iconColor="#a10000"></app-card-single-info>
   </ng-container>
 
   <ng-container *ngIf="displayFooter" footer>
     <button class="btn btn-fill btn-danger" (click)="moreInfo()">Więcej informacji</button>
   </ng-container>
 </app-card>
-
-<ng-template #carAvailability>
-  <p *ngIf="car.price < 200000; else carOnDemand">
-    SAMOCHÓD DOSTĘPNY
-  </p>
-  <ng-template #carOnDemand>
-    <p>SAMOCHÓD NA ZAMÓWIENIE</p>
-  </ng-template>
-</ng-template>

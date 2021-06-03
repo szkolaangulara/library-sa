@@ -6,6 +6,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
+import {CarStatusPipe} from '@app/pipes/car-status.pipe';
 import {NgxMaskModule} from 'ngx-mask';
 import {UserComponent} from '@app/pages/user/user.component';
 import {CardComponent} from '@app/components/card/card.component';
@@ -22,7 +23,10 @@ import {TextAreaComponent} from '@app/components/form/text-area/text-area.compon
 import {AdminLayoutRoutes} from './admin-layout.routing';
 import {UserCardComponent} from '@app/pages/user/user-card/user-card.component';
 import {LocaleCurrencyPipe} from '@app/pipes/locale-currency.pipe';
+import {CarStatusColorPipe} from '@app/pipes/car-status-color.pipe';
 import {DashboardComponent} from '@app/pages/dashboard/dashboard.component';
+import {ViewStateComponent} from '@app/components/view-state/view-state.component';
+import {ErrorStateComponent} from '@app/components/error-state/error-state.component';
 import {TypographyComponent} from '@app/pages/typography/typography.component';
 import {FlexboxGuideComponent} from '@app/components/layout-manager/flexbox-guide/flexbox-guide.component';
 import {FileUploaderComponent} from '@app/components/files/file-uploader/file-uploader.component';
@@ -30,6 +34,7 @@ import {NotificationsComponent} from '@app/pages/notifications/notifications.com
 import {AddTaskDialogComponent} from '@app/components/tasks/add-task-dialog/add-task-dialog.component';
 import {FilesDashboardComponent} from '@app/components/files/files-dashboard/files-dashboard.component';
 import {ChartDashboardComponent} from '@app/components/charts/chart-dashboard/chart-dashboard.component';
+import {CardSingleInfoComponent} from '@app/components/card/card-single-info/card-single-info.component';
 import {DragAndDropFileDirective} from '@app/directives/drag-and-drop-file.directive';
 import {AddCarDialogFormComponent} from '@app/components/layout-manager/add-car-dialog-form/add-car-dialog-form.component';
 import {ContentContainerComponent} from '@app/components/content-container/content-container.component';
@@ -46,9 +51,11 @@ import {LayoutManagerDashboardComponent} from '@app/components/layout-manager/la
     HttpClientModule,
     NgbModule,
     NgxMaskModule,
-    ComponentsModule,
+    ComponentsModule
   ],
+  providers: [LocaleCurrencyPipe, DatePipe],
   declarations: [
+    CarStatusPipe,
     UserComponent,
     CardComponent,
     InputComponent,
@@ -61,7 +68,10 @@ import {LayoutManagerDashboardComponent} from '@app/components/layout-manager/la
     UserCardComponent,
     TextAreaComponent,
     DashboardComponent,
+    CarStatusColorPipe,
+    ViewStateComponent,
     LocaleCurrencyPipe,
+    ErrorStateComponent,
     TypographyComponent,
     FlexboxGuideComponent,
     FileUploaderComponent,
@@ -69,12 +79,12 @@ import {LayoutManagerDashboardComponent} from '@app/components/layout-manager/la
     AddTaskDialogComponent,
     ChartDashboardComponent,
     FilesDashboardComponent,
+    CardSingleInfoComponent,
     DragAndDropFileDirective,
     ContentContainerComponent,
     AddCarDialogFormComponent,
-    LayoutManagerDashboardComponent
-  ],
-  providers: [LocaleCurrencyPipe, DatePipe]
+    LayoutManagerDashboardComponent,
+  ]
 })
 export class AdminLayoutModule {
 }

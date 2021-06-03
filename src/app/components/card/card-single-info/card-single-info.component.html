@@ -1,0 +1,7 @@
+<div class="one-line-info">
+  <p class="info-label">
+    <i *ngIf="icon" class="tim-icons {{ icon }}" [ngStyle]="{'color': iconColor}"></i>
+    <span class="label" *ngIf="label" [ngStyle]="{'color': labelColor}">{{label}}</span>
+  </p>
+  <p [ngStyle]="{'color': valueColor}" *ngIf="value">{{ value }}</p>
+</div>

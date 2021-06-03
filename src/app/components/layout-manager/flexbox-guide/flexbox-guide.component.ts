@@ -1,12 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 
-import {takeUntil} from 'rxjs/operators';
+import {catchError, takeUntil} from 'rxjs/operators';
 
 import {Car} from '@app/models/car.interface';
 import {CarService} from '@app/services/car.service';
 import {Destroyable} from '@app/components/destroyable';
 import {DialogService} from '@app/components/dialog/services/dialog.service';
 import {AddCarDialogFormComponent} from '@app/components/layout-manager/add-car-dialog-form/add-car-dialog-form.component';
+import {ViewState} from '@app/enums/view-state.enum';
+import {EMPTY} from 'rxjs';
 
 @Component({
   selector: 'app-flexbox-guide',
@@ -17,8 +19,9 @@ export class FlexboxGuideComponent extends Destroyable implements OnInit {
   public cars: Car[];
   public radioValue: string = 'flex-start';
   public radioValueY: string = 'flex-start';
-  public cardAmount: number = 3;
+  public cardAmount: number = 8;
   public cardWidth: string = '32%';
+  public viewState: ViewState = ViewState.LOADING;
 
   constructor(private carService: CarService, private dialogService: DialogService) {
     super();
@@ -38,7 +41,16 @@ export class FlexboxGuideComponent extends Destroyable implements OnInit {
 
   private prepareCars(): void {
     this.carService.fetchAllCars()
-      .pipe(takeUntil(this.destroyed$))
-      .subscribe((cars: Car[]) => this.cars = cars);
+      .pipe(
+        catchError(() => {
+          this.viewState = ViewState.ERROR;
+          return EMPTY;
+        }),
+        takeUntil(this.destroyed$)
+      )
+      .subscribe((cars: Car[]) => {
+        this.cars = cars;
+        this.viewState = ViewState.SUCCESS;
+      });
   }
 }

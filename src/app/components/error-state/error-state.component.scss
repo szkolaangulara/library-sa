@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  .cancel-icon {
+    color: red;
+    font-size: 30px;
+    margin-right: 5px;
+  }
+}

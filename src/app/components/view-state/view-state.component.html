@@ -1,0 +1,9 @@
+<ng-container *ngIf="viewState === ViewState.SUCCESS">
+  <ng-content></ng-content>
+</ng-container>
+<div class="loader" *ngIf="viewState === ViewState.LOADING">
+  <mat-spinner color="warn"></mat-spinner>
+</div>
+<div class="error" *ngIf="viewState === ViewState.ERROR">
+  <app-error-state></app-error-state>
+</div>
