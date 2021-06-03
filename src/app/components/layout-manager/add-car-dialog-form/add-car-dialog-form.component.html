@@ -24,19 +24,19 @@
       <div class="row-input">
         <div class="input-element space-right">
           <app-input
-            label="Pojemność silnika w cm3"
-            placeholder="np. 3000"
-            [parentFormControl]="getFormControl(FormControlName.ENGINE_SIZE)"
-            requiredErrorText="Pojemność jest wymagana"
+            label="Cena"
+            placeholder="np. 185000"
+            [parentFormControl]="getFormControl(FormControlName.PRICE)"
+            requiredErrorText="Cena jest wymagana"
             patternErrorText="Dozwolona wartość to liczba całkowita"
           ></app-input>
         </div>
         <div class="input-element space-both-side">
           <app-input
-            label="Moc (konie mechaniczne)"
-            placeholder="np. 450"
-            [parentFormControl]="getFormControl(FormControlName.HORSE_POWER)"
-            requiredErrorText="Moc jest wymagana"
+            label="Cena za dobę"
+            placeholder="np. 200"
+            [parentFormControl]="getFormControl(FormControlName.PRICE_PER_DAY)"
+            requiredErrorText="Cena za dobę jest wymagana"
             patternErrorText="Dozwolona wartość to liczba całkowita"
           ></app-input>
         </div>
@@ -52,33 +52,6 @@
             requiredErrorText="Data produkcji jest wymagany"
             patternErrorText="Niepoprawna data"
           ></app-input>
-        </div>
-        <div class="input-element space-both-side">
-          <app-input
-            label="Przebieg"
-            placeholder="np. 123431"
-            [parentFormControl]="getFormControl(FormControlName.MILEAGE)"
-            requiredErrorText="Przebieg jest wymagany"
-            patternErrorText="Dozwolona wartość to liczba całkowita"
-          ></app-input>
-        </div>
-      </div>
-      <div class="row-input">
-        <div class="input-element space-right">
-          <app-input
-            label="Cena"
-            placeholder="np. 185000"
-            [parentFormControl]="getFormControl(FormControlName.PRICE)"
-            requiredErrorText="Cena jest wymagana"
-            patternErrorText="Dozwolona wartość to liczba całkowita"
-          ></app-input>
-        </div>
-        <div class="input-element space-both-side">
-          <label for="fuelType">Rodzaj paliwa</label>
-          <select id="fuelType" class="form-control" [formControlName]="FormControlName.FUEL_TYPE">
-            <option class="form-control-option" value="gasoline">Benzyna</option>
-            <option class="form-control-option" value="diesel">Diesel</option>
-          </select>
         </div>
       </div>
     </div>

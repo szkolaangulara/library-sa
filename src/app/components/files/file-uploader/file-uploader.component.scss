@@ -1,9 +1,10 @@
 .border-upload-box {
-  border-radius: 7px;
-  text-align: center;
-  padding: 30px;
-  transition: all 0.2s ease-in-out;
   border: 1px dotted #000000;
+  padding: 30px;
+  text-align: center;
+  margin-top: 10px;
+  transition: all 0.2s ease-in-out;
+  border-radius: 7px;
 }
 
 .file-list {

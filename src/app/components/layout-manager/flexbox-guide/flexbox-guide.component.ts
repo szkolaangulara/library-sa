@@ -40,6 +40,7 @@ export class FlexboxGuideComponent extends Destroyable implements OnInit {
   }
 
   private prepareCars(): void {
+    this.viewState = ViewState.LOADING;
     this.carService.fetchAllCars()
       .pipe(
         catchError(() => {

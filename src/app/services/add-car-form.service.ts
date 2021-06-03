@@ -2,6 +2,8 @@ import {Injectable} from '@angular/core';
 
 import {Validator} from '@app/enums/validator.enum';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AddTaskFormControlName} from '@app/components/tasks/add-task-dialog/add-task-form-control-name.enum';
+import {AddCarFormControlName} from '@app/components/layout-manager/add-car-dialog-form/add-car-form-control-name.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -13,14 +15,11 @@ export class AddCarFormService {
 
   public initForm(): FormGroup {
     return this.formBuilder.group({
-      brand: ['', Validators.required],
-      model: ['', Validators.required],
-      engineSize: ['', [Validators.required, Validators.pattern(Validator.ONLY_INTEGERS)]],
-      horsePower: ['', [Validators.required, Validators.pattern(Validator.ONLY_INTEGERS)]],
-      productionDate: ['', [Validators.required, Validators.pattern(Validator.DATE)]],
-      mileage: ['', [Validators.required, Validators.pattern(Validator.ONLY_INTEGERS)]],
-      price: ['', [Validators.required, Validators.pattern(Validator.ONLY_INTEGERS)]],
-      fuelType: ['', Validators.required],
+      [AddCarFormControlName.BRAND]: ['', Validators.required],
+      [AddCarFormControlName.MODEL]: ['', Validators.required],
+      [AddCarFormControlName.PRODUCTION_DATE]: ['', [Validators.required, Validators.pattern(Validator.DATE)]],
+      [AddCarFormControlName.PRICE]: ['', [Validators.required, Validators.pattern(Validator.ONLY_INTEGERS)]],
+      [AddCarFormControlName.PRICE_PER_DAY]: ['', [Validators.required, Validators.pattern(Validator.ONLY_INTEGERS)]],
     });
   }
 }

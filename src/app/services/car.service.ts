@@ -37,7 +37,7 @@ export class CarService {
         price: 280000,
         pricePerDay: 2500,
         status: CarStatus.AVAILABLE,
-        date: '2015/06/10',
+        date: '2015.06.10',
         photoSource: 'https://www.szkolaangulara.pl/wp-content/uploads/2020/05/3-small.jpeg'
       },
       {
@@ -46,7 +46,7 @@ export class CarService {
         price: 1150000,
         pricePerDay: 6000,
         status: CarStatus.TO_ORDER,
-        date: '2018/09/22',
+        date: '2018.09.22',
         photoSource: 'https://www.szkolaangulara.pl/wp-content/uploads/2020/05/6-small.jpeg'
       },
       {
@@ -55,7 +55,7 @@ export class CarService {
         price: 1780000,
         pricePerDay: 8000,
         status: CarStatus.SOLD,
-        date: '2018/09/22',
+        date: '2018.09.22',
         photoSource: 'https://www.szkolaangulara.pl/wp-content/uploads/2020/05/10-small.jpeg'
       },
     ])
@@ -69,7 +69,7 @@ export class CarService {
         price: 280000,
         pricePerDay: 2500,
         status: CarStatus.AVAILABLE,
-        date: '2015/06/10',
+        date: '2015.06.10',
         photoSource: 'https://www.szkolaangulara.pl/wp-content/uploads/2020/05/3-small.jpeg'
       },
       {
@@ -78,7 +78,7 @@ export class CarService {
         price: 700000,
         pricePerDay: 4500,
         status: CarStatus.TO_ORDER,
-        date: '2017/03/01',
+        date: '2017.03.01',
         photoSource: 'https://www.szkolaangulara.pl/wp-content/uploads/2020/05/4-small.jpeg'
       },
       {
@@ -87,7 +87,7 @@ export class CarService {
         price: 130000,
         pricePerDay: 350,
         status: CarStatus.BORROWED,
-        date: '2018/04/09',
+        date: '2018.04.09',
         photoSource: 'https://www.szkolaangulara.pl/wp-content/uploads/2020/05/5-small.jpeg'
       },
       {
@@ -96,7 +96,7 @@ export class CarService {
         price: 120000,
         pricePerDay: 350,
         status: CarStatus.AVAILABLE,
-        date: '2016/09/22',
+        date: '2016.09.22',
         photoSource: 'https://www.szkolaangulara.pl/wp-content/uploads/2020/05/8-small.jpeg'
       },
       {
@@ -105,7 +105,7 @@ export class CarService {
         price: 45000,
         pricePerDay: 200,
         status: CarStatus.BORROWED,
-        date: '2010/09/22',
+        date: '2010.09.22',
         photoSource: 'https://www.szkolaangulara.pl/wp-content/uploads/2020/05/7-small.jpeg'
       },
       {
@@ -114,7 +114,7 @@ export class CarService {
         price: 1150000,
         pricePerDay: 6000,
         status: CarStatus.TO_ORDER,
-        date: '2018/09/22',
+        date: '2018.09.22',
         photoSource: 'https://www.szkolaangulara.pl/wp-content/uploads/2020/05/6-small.jpeg'
       },
       {
@@ -123,7 +123,7 @@ export class CarService {
         price: 1780000,
         pricePerDay: 8000,
         status: CarStatus.SOLD,
-        date: '2018/09/22',
+        date: '2018.09.22',
         photoSource: 'https://www.szkolaangulara.pl/wp-content/uploads/2020/05/10-small.jpeg'
       },
     ];

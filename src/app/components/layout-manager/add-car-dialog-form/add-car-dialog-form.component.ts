@@ -8,6 +8,7 @@ import {AlertService} from '@app/services/alert.service';
 import {DialogService} from '@app/components/dialog/services/dialog.service';
 import {AddCarFormControlName} from '@app/components/layout-manager/add-car-dialog-form/add-car-form-control-name.enum';
 import {FileService} from '@app/components/files/services/file.service';
+import {CarStatus} from '@app/enums/car.status.enum';
 
 @Component({
   selector: 'app-add-car-dialog-form',
@@ -40,11 +41,13 @@ export class AddCarDialogFormComponent implements OnInit {
 
   public submit(): void {
     const car: Car = {
-      brand: this.form.get(AddCarFormControlName.BRAND).value,
-      date: this.form.get(AddCarFormControlName.PRODUCTION_DATE).value,
-      model: this.form.get(AddCarFormControlName.MODEL).value,
+      brand: this.form.get(AddCarFormControlName.BRAND)?.value,
+      date: this.form.get(AddCarFormControlName.PRODUCTION_DATE)?.value,
+      model: this.form.get(AddCarFormControlName.MODEL)?.value,
       photoSource: this.imgURL,
-      price: this.form.get(AddCarFormControlName.PRICE).value,
+      price: this.form.get(AddCarFormControlName.PRICE)?.value,
+      pricePerDay: this.form.get(AddCarFormControlName.PRICE_PER_DAY)?.value,
+      status: CarStatus.AVAILABLE,
     };
 
     this.carService.addNewCar(car);
