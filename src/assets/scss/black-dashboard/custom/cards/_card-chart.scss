@@ -36,7 +36,11 @@
   .chart-area {
     height: 220px;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
+
   .card-footer {
     margin-top: 15px;
 

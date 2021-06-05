@@ -7,7 +7,9 @@
   </ng-container>
   <ng-container body>
     <div class="chart-area">
-      <canvas #myCanvas></canvas>
+      <canvas [hidden]="viewState !== ViewState.SUCCESS" #myCanvas></canvas>
+      <mat-spinner *ngIf="viewState === ViewState.LOADING" color="warn"></mat-spinner>
+      <app-error-state *ngIf="viewState === ViewState.ERROR"></app-error-state>
     </div>
   </ng-container>
 </app-card>

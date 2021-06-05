@@ -3,10 +3,15 @@ import {ChartType} from '@app/enums/chart-type.enum';
 import {CarService} from '@app/services/car.service';
 import {Car} from '@app/models/car.interface';
 import {Destroyable} from '@app/components/destroyable';
-import {takeUntil} from 'rxjs/operators';
+import {catchError, takeUntil} from 'rxjs/operators';
 import {TableData} from '@app/models/table.interface';
 import {DialogService} from '@app/components/dialog/services/dialog.service';
 import {CarCardComponent} from '@app/components/car-card/car-card.component';
+import {HttpResponse} from '@angular/common/http';
+import {ViewState} from '@app/enums/view-state.enum';
+import {ChartService} from '@app/components/charts/services/chart.service';
+import {EMPTY} from 'rxjs';
+import {CarStatus} from '@app/enums/car.status.enum';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,39 +19,71 @@ import {CarCardComponent} from '@app/components/car-card/car-card.component';
   styleUrls: ['dashboard.component.scss']
 })
 export class DashboardComponent extends Destroyable implements OnInit {
+  public topCarsViewState: ViewState = ViewState.LOADING;
+  public lineViewState: ViewState = ViewState.LOADING;
+  public carsTableViewState: ViewState = ViewState.LOADING;
   public ChartType: typeof ChartType = ChartType;
   public cars: Car[];
-  public carsData: TableData[] = [];
+  public carsTableData: TableData[];
   public headers: string[] = [];
-  public lineChartData: number[] = [100, 70, 90, 70, 85, 60, 75, 60, 90, 80, 110, 100];
+  public lineChartData: number[];
   public chartLabels: string[] = ['STY', 'LUT', 'MAR', 'KWI', 'MAJ', 'CZE', 'LIP', 'SIE', 'WRZ', 'PAŹ', 'LIS', 'GRU'];
 
-  constructor(private carService: CarService, private dialogService: DialogService) {
+  constructor(private carService: CarService, private dialogService: DialogService, private chartService: ChartService) {
     super();
   }
 
   public ngOnInit() {
     this.carService.fetchTopSoldCars()
-      .pipe(takeUntil(this.destroyed$))
-      .subscribe((cars: Car[]) => this.cars = cars);
+      .pipe(
+        takeUntil(this.destroyed$),
+        catchError(() => {
+          this.topCarsViewState = ViewState.ERROR;
+          return EMPTY;
+        })
+      )
+      .subscribe((response: HttpResponse<Car[]>) => {
+        this.cars = response.body;
+        this.topCarsViewState = ViewState.SUCCESS;
+      });
+
+    this.chartService.fetchLinearChartData()
+      .pipe(
+        takeUntil(this.destroyed$),
+        catchError(() => {
+          this.lineViewState = ViewState.ERROR;
+          return EMPTY;
+        })
+      )
+      .subscribe((response: HttpResponse<number[]>) => {
+        this.lineChartData = response.body;
+        this.lineViewState = ViewState.SUCCESS;
+      });
 
     this.handleTableDataPreparation();
   }
 
   private handleTableDataPreparation(): void {
     this.carService.fetchAllCars()
-      .pipe(takeUntil(this.destroyed$))
-      .subscribe((cars: Car[]) => {
-        this.carsData = this.prepareTableDataFromCarsData(cars);
+      .pipe(
+        takeUntil(this.destroyed$),
+        catchError(() => {
+          this.carsTableViewState = ViewState.ERROR;
+          return EMPTY;
+        })
+      )
+      .subscribe((response: HttpResponse<Car[]>) => {
+        this.carsTableData = this.prepareTableDataFromCarsData(response.body);
+        this.headers.push('Marka');
+        this.headers.push('Model');
+        this.headers.push('Cena');
+        this.headers.push('Data');
+        this.carsTableViewState = ViewState.SUCCESS;
       });
-
-    this.headers.push('Marka');
-    this.headers.push('Model');
-    this.headers.push('Cena');
-    this.headers.push('Data');
   }
 
   public rowClicked(tableData: TableData): void {
+    console.log(tableData);
     const car: Car = this.prepareCarFromTableData(tableData);
     const carComponent: CarCardComponent = this.dialogService.openDialog(CarCardComponent);
     carComponent.car = car;
@@ -58,8 +95,10 @@ export class DashboardComponent extends Destroyable implements OnInit {
       brand: tableData.data[0].value as string,
       model: tableData.data[1].value as string,
       price: tableData.data[2].value as number,
-      date: tableData.data[3].value as string,
-      photoSource: tableData.data[4].value as string,
+      pricePerDay: tableData.data[3].value as number,
+      date: tableData.data[4].value as string,
+      status: tableData.data[5].value as CarStatus,
+      photoSource: tableData.data[6].value as string,
     };
   }
 
@@ -81,8 +120,16 @@ export class DashboardComponent extends Destroyable implements OnInit {
             display: true,
           },
           {
+            value: car.pricePerDay,
+            display: false,
+          },
+          {
             value: car.date,
             display: true,
+          },
+          {
+            value: car.status,
+            display: false,
           },
           {
             value: car.photoSource,

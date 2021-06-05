@@ -1,6 +1,7 @@
 <app-content-container>
   <div class="row">
     <app-chart class="chart-card-2"
+               [viewState]="linearChartViewState"
                [chartType]="ChartType.LINE"
                [chartData]="lineChartData"
                [labels]="chartLabels"
@@ -11,6 +12,7 @@
     </app-chart>
 
     <app-chart class="chart-card-2"
+               [viewState]="barChartViewState"
                [chartType]="ChartType.BAR"
                [chartData]="barChartData"
                [chartColors]="chartColors"
@@ -23,14 +25,8 @@
     </app-chart>
   </div>
   <div class="row">
-    <app-chart class="chart-card-3"
-               [chartType]="ChartType.RADAR"
-               [labels]="chartRadarLabels"
-               mainLabel="Efektywność"
-               color="#ff00c1">
-    </app-chart>
-
-    <app-chart class="chart-card-3"
+    <app-chart class="chart-card-2"
+               [viewState]="pieChartViewState"
                [chartType]="ChartType.PIE"
                [chartData]="pieChartData"
                [chartColors]="chartColors"
@@ -41,7 +37,8 @@
                color="#c70000">
     </app-chart>
 
-    <app-chart class="chart-card-3"
+    <app-chart class="chart-card-2"
+               [viewState]="doughnutChartViewState"
                [chartType]="ChartType.DOUGHNUT"
                [chartData]="doughnutChartData"
                [chartColors]="chartColors"

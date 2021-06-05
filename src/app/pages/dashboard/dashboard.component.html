@@ -1,6 +1,7 @@
 <app-content-container>
   <div class="row section-margin">
     <app-chart class="col-12"
+               [viewState]="lineViewState"
                [chartType]="ChartType.LINE"
                [chartData]="lineChartData"
                [labels]="chartLabels"
@@ -12,9 +13,15 @@
     </app-chart>
   </div>
 
-  <h3 class="header">TOP 3 SAMOCHODY</h3>
-  <div class="row section-margin">
-    <app-car-card class="dashboard-car-card" *ngFor="let car of cars" [car]="car"></app-car-card>
+  <div class="cars-container">
+    <h3 class="header">TOP 3 SAMOCHODY</h3>
+    <app-view-state [viewState]="topCarsViewState">
+      <ng-container *ngIf="cars">
+        <div class="row section-margin">
+          <app-car-card class="dashboard-car-card" *ngFor="let car of cars" [car]="car"></app-car-card>
+        </div>
+      </ng-container>
+    </app-view-state>
   </div>
 
   <div class="row section-margin">
@@ -22,7 +29,12 @@
       <app-tasks></app-tasks>
     </div>
     <div class="dashboard-data-card">
-      <app-table tableHeader="Dostępne samochody" [data]="carsData" [headers]="headers" [highlightRow]="true" (rowClicked)="rowClicked($event)"></app-table>
+      <app-table [viewState]="carsTableViewState"
+                 tableHeader="Dostępne samochody"
+                 [data]="carsTableData"
+                 [headers]="headers"
+                 [highlightRow]="true"
+                 (rowClicked)="rowClicked($event)"></app-table>
     </div>
   </div>
 </app-content-container>

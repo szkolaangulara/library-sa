@@ -9,6 +9,7 @@ import {DialogService} from '@app/components/dialog/services/dialog.service';
 import {AddCarDialogFormComponent} from '@app/components/layout-manager/add-car-dialog-form/add-car-dialog-form.component';
 import {ViewState} from '@app/enums/view-state.enum';
 import {EMPTY} from 'rxjs';
+import {HttpResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-flexbox-guide',
@@ -49,8 +50,8 @@ export class FlexboxGuideComponent extends Destroyable implements OnInit {
         }),
         takeUntil(this.destroyed$)
       )
-      .subscribe((cars: Car[]) => {
-        this.cars = cars;
+      .subscribe((response: HttpResponse<Car[]>) => {
+        this.cars = response.body;
         this.viewState = ViewState.SUCCESS;
       });
   }

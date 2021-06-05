@@ -1,0 +1,8 @@
+{
+  "/cars/all": "/cars-all",
+  "/cars/top": "/cars-top",
+  "/chart/linear": "/chart-linear",
+  "/chart/bar": "/chart-bar",
+  "/chart/pie": "/chart-pie",
+  "/chart/doughnut": "/chart-doughnut"
+}

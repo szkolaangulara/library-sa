@@ -10,7 +10,7 @@ import {HttpClient, HttpResponse} from '@angular/common/http';
 })
 export class HttpService {
 
-  protected apiEndPoint: string;
+  protected apiEndPoint: string = environment.apiEndPoint;
 
   constructor(private http: HttpClient) {
     this.apiEndPoint = environment.apiEndPoint;

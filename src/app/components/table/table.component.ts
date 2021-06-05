@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 import {RowSingleData, TableData} from '@app/models/table.interface';
+import {ViewState} from '@app/enums/view-state.enum';
 
 @Component({
   selector: 'app-table',
@@ -17,12 +18,14 @@ export class TableComponent implements OnChanges {
   public tableBodyHeight: string;
   @Input()
   public highlightRow: boolean = false;
+  @Input()
+  public viewState: ViewState = ViewState.SUCCESS;
   @Output()
   public rowClicked: EventEmitter<TableData> = new EventEmitter<TableData>();
   public tableData: (number | string)[] = [];
 
   public ngOnChanges(changes: SimpleChanges): void {
-    if (changes && changes.data) {
+    if (changes && changes.data && this.data && this.data.length > 0) {
       this.data.forEach((tableData: TableData) => {
         tableData.data
           .forEach((data: RowSingleData) => {

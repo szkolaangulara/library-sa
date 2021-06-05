@@ -6,6 +6,7 @@ import {Car} from '@app/models/car.interface';
 import {TableData} from '@app/models/table.interface';
 import {CarService} from '@app/services/car.service';
 import {Destroyable} from '@app/components/destroyable';
+import {HttpResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-user',
@@ -26,7 +27,7 @@ export class UserComponent extends Destroyable implements OnInit {
   public ngOnInit() {
     this.carService.fetchTopSoldCars()
       .pipe(takeUntil(this.destroyed$))
-      .subscribe((cars: Car[]) => this.cars = cars);
+      .subscribe((cars: HttpResponse<Car[]>) => this.cars = cars.body);
 
     this.handleTableDataPreparation();
   }
@@ -34,8 +35,8 @@ export class UserComponent extends Destroyable implements OnInit {
   private handleTableDataPreparation(): void {
     this.carService.fetchAllCars()
       .pipe(takeUntil(this.destroyed$))
-      .subscribe((cars: Car[]) => {
-        this.carsData = this.prepareTableDataFromCarsData(cars);
+      .subscribe((cars: HttpResponse<Car[]>) => {
+        this.carsData = this.prepareTableDataFromCarsData(cars.body);
         console.log(this.carsData);
 
         this.headers.push('Marka');

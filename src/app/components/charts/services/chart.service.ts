@@ -2,6 +2,10 @@ import {Injectable} from '@angular/core';
 
 import {hexToRgb} from '@app/helpers/color.helper';
 import {ChartType} from '@app/enums/chart-type.enum';
+import {Observable} from 'rxjs';
+import {HttpResponse} from '@angular/common/http';
+import {HttpService} from '@app/services/http.service';
+import {delay} from 'rxjs/operators';
 
 export interface ChartConfig {
   chartType: ChartType;
@@ -18,6 +22,30 @@ export interface ChartConfig {
   providedIn: 'root'
 })
 export class ChartService {
+
+  constructor(private httpService: HttpService) {
+  }
+
+  public fetchLinearChartData(): Observable<HttpResponse<number[]>> {
+    return this.httpService.get<number[]>('/chart/linear')
+      .pipe(delay(2000));
+  }
+
+  public fetchBarChartData(): Observable<HttpResponse<number[]>> {
+    return this.httpService.get<number[]>('/chart/bar')
+      .pipe(delay(1000));
+  }
+
+  public fetchPieChartData(): Observable<HttpResponse<number[]>> {
+    return this.httpService.get<number[]>('/chart/pie')
+      .pipe(delay(2500));
+  }
+
+  public fetchDoughnutChartData(): Observable<HttpResponse<number[]>> {
+    return this.httpService.get<number[]>('/chart/doughnut')
+      .pipe(delay(3500));
+  }
+
   public getChartConfig(chartConfig: ChartConfig): any {
     switch (chartConfig.chartType) {
       case ChartType.BAR:
