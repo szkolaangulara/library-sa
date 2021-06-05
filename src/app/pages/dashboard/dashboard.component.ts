@@ -83,7 +83,6 @@ export class DashboardComponent extends Destroyable implements OnInit {
   }
 
   public rowClicked(tableData: TableData): void {
-    console.log(tableData);
     const car: Car = this.prepareCarFromTableData(tableData);
     const carComponent: CarCardComponent = this.dialogService.openDialog(CarCardComponent);
     carComponent.car = car;

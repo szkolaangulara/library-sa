@@ -37,7 +37,6 @@ export class UserComponent extends Destroyable implements OnInit {
       .pipe(takeUntil(this.destroyed$))
       .subscribe((cars: HttpResponse<Car[]>) => {
         this.carsData = this.prepareTableDataFromCarsData(cars.body);
-        console.log(this.carsData);
 
         this.headers.push('Marka');
         this.headers.push('Model');

@@ -7,7 +7,6 @@ import {CarStatus} from '@app/enums/car.status.enum';
 export class CarStatusColorPipe implements PipeTransform {
 
   public transform(value: CarStatus): string {
-    console.log('wchodzi wpipea');
     switch (value) {
       case CarStatus.SOLD:
         return '#a10000';
