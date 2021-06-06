@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 import {Car} from '@app/models/car.interface';
 import {DialogService} from '@app/components/dialog/services/dialog.service';
+import {DialogConfig} from '@app/components/dialog/dialog-config.interface';
 
 @Component({
   selector: 'app-car-card',
@@ -20,7 +21,10 @@ export class CarCardComponent {
   }
 
   public moreInfo(): void {
-    const cardComponent: CarCardComponent = this.dialogService.openDialog(CarCardComponent);
+    const dialogConfig: DialogConfig = {
+      width: '500px',
+    };
+    const cardComponent: CarCardComponent = this.dialogService.openDialog(CarCardComponent, dialogConfig);
     cardComponent.car = this.car;
     cardComponent.displayFooter = false;
   }

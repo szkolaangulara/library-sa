@@ -2,7 +2,7 @@
   <div *ngIf="shouldDisplayHeader" #header class="card-header">
     <ng-content select="[header]"></ng-content>
   </div>
-  <img *ngIf="cardImageSource" [src]="cardImageSource"/>
+  <img *ngIf="cardImageSource" [src]="cardImageSource" [ngStyle]="{'height': imageHeight}"/>
   <div *ngIf="shouldDisplayBody" #body class="card-body"
        [ngClass]="{ 'card-body-overflow' : cardBodyHeight }"
        [ngStyle]="{ 'height' : cardBodyHeight }">

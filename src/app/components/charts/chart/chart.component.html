@@ -1,4 +1,4 @@
-<app-card class="card-chart">
+<app-card class="card-chart" [cardHeight]="chartHeight">
   <ng-container *ngIf="topLabel || mainLabel" header>
     <h5 class="card-category">{{topLabel}}</h5>
     <h2 class="card-title">

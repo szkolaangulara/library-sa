@@ -18,6 +18,8 @@ export class CardComponent implements AfterViewInit {
   @Input()
   public cardImageSource: string;
   @Input()
+  public imageHeight: string;
+  @Input()
   public cardBodyHeight: string;
   @Input()
   public cardCustomClass: string;

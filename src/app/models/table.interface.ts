@@ -3,6 +3,6 @@ export interface TableData {
 }
 
 export interface RowSingleData {
-  value: (string | number),
+  value: (string | number | string[] | number[] | any),
   display: boolean;
 }

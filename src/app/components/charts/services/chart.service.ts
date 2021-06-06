@@ -67,9 +67,11 @@ export class ChartService {
     const canvasGradient: CanvasGradient = canvasFillStyles.createLinearGradient(0, 230, 0, 50);
 
     const rgbColors: number[] = hexToRgb(color);
-    canvasGradient.addColorStop(1, `rgba(${rgbColors[0]},${rgbColors[1]},${rgbColors[2]}, 0.5)`);
-    canvasGradient.addColorStop(0.1, 'rgba(64,64,64,0.0)');
-    canvasGradient.addColorStop(0, 'rgba(64,64,64,0)');
+    if (rgbColors) {
+      canvasGradient.addColorStop(1, `rgba(${rgbColors[0]},${rgbColors[1]},${rgbColors[2]}, 0.5)`);
+      canvasGradient.addColorStop(0.1, 'rgba(64,64,64,0.0)');
+      canvasGradient.addColorStop(0, 'rgba(64,64,64,0)');
+    }
 
     return canvasGradient;
   }
@@ -97,8 +99,8 @@ export class ChartService {
         labels: chartConfig.labels,
         datasets: [{
           data: chartConfig.chartData,
-          backgroundColor: chartConfig.chartColors || '#F8C471',
-          borderColor: chartConfig.borderColors || '#F8C471',
+          backgroundColor: chartConfig.chartColors || chartConfig.color ||'#F8C471',
+          borderColor: chartConfig.borderColors || chartConfig.color || '#F8C471',
           borderWidth: 1
         }]
       },

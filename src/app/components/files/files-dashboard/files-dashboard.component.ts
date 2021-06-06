@@ -17,7 +17,10 @@ export class FilesDashboardComponent {
       this.imgURL = null;
       return;
     }
-    this.fileService.getUrlFromUploadedImage(files).then((imgUrl: string) => this.imgURL = imgUrl);
+    this.fileService.getUrlFromUploadedImage(files).then((imgUrl: string) => {
+      this.imgURL = imgUrl;
+      console.log(this.imgURL);
+    });
   }
 
   public downloadFile(): void {

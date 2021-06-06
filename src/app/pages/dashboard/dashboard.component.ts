@@ -12,6 +12,7 @@ import {ViewState} from '@app/enums/view-state.enum';
 import {ChartService} from '@app/components/charts/services/chart.service';
 import {EMPTY} from 'rxjs';
 import {CarStatus} from '@app/enums/car.status.enum';
+import {DialogConfig} from '@app/components/dialog/dialog-config.interface';
 
 @Component({
   selector: 'app-dashboard',
@@ -84,7 +85,10 @@ export class DashboardComponent extends Destroyable implements OnInit {
 
   public rowClicked(tableData: TableData): void {
     const car: Car = this.prepareCarFromTableData(tableData);
-    const carComponent: CarCardComponent = this.dialogService.openDialog(CarCardComponent);
+    const dialogConfig: DialogConfig = {
+      width: '500px',
+    };
+    const carComponent: CarCardComponent = this.dialogService.openDialog(CarCardComponent, dialogConfig);
     carComponent.car = car;
     carComponent.displayFooter = false;
   }

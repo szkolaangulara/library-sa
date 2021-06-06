@@ -1,4 +1,4 @@
-<app-card *ngIf="tableData">
+<app-card *ngIf="tableData" [cardHeight]="tableHeight">
   <h4 header *ngIf="tableHeader" class="card-title">{{tableHeader}}</h4>
 
   <div class="table-body" body [ngStyle]="{ 'max-height': tableBodyHeight }">

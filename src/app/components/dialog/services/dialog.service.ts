@@ -12,9 +12,10 @@ import {
 import {DOCUMENT} from '@angular/common';
 
 import {take} from 'rxjs/operators';
+import {Subject} from 'rxjs';
 
+import {DialogConfig} from '@app/components/dialog/dialog-config.interface';
 import {DialogComponent} from '@app/components/dialog/dialog.component';
-import {Observable, Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -29,8 +30,12 @@ export class DialogService {
               @Inject(DOCUMENT) private document: Document) {
   }
 
-  public openDialog(childComponentType: Type<any>): any {
+  public openDialog(childComponentType: Type<any>, dialogConfig?: DialogConfig): any {
     this.dialogComponentRef = this.prepareComponentRef();
+    if (dialogConfig) {
+      this.dialogComponentRef.instance.dialogWidth = dialogConfig.width;
+      this.dialogComponentRef.instance.dialogHeight = dialogConfig.height;
+    }
 
     this.addDialogToComponentTree();
     this.appendDialogToDOM();

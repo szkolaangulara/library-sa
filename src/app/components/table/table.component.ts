@@ -20,6 +20,8 @@ export class TableComponent implements OnChanges {
   public highlightRow: boolean = false;
   @Input()
   public viewState: ViewState = ViewState.SUCCESS;
+  @Input()
+  public tableHeight: string;
   @Output()
   public rowClicked: EventEmitter<TableData> = new EventEmitter<TableData>();
   public tableData: (number | string)[] = [];

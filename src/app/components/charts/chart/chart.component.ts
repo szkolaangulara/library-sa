@@ -50,6 +50,8 @@ export class ChartComponent extends Destroyable implements AfterViewInit, OnChan
   public labels: string[];
   @Input()
   public viewState: ViewState = ViewState.SUCCESS;
+  @Input()
+  public chartHeight: string;
   public myChartData;
   public data: any;
   public canvas: HTMLCanvasElement;
@@ -64,10 +66,7 @@ export class ChartComponent extends Destroyable implements AfterViewInit, OnChan
     super();
     forkJoin([this.chartRendered$, this.chartDataPrepared$])
       .pipe(takeUntil(this.destroyed$))
-      .subscribe(() => {
-        this.myChartData.data.datasets[0].data = this.chartData;
-        this.myChartData.update();
-      });
+      .subscribe(() => this.renderPreparedChart());
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -89,10 +88,15 @@ export class ChartComponent extends Destroyable implements AfterViewInit, OnChan
 
     this.canvas = document.getElementById(this.chartId) as HTMLCanvasElement;
     this.canvasFillStyles = this.canvas.getContext('2d');
+  }
 
+  private renderPreparedChart(): void {
     const chartConfig: ChartConfig = this.prepareChartConfig();
     const config = this.chartService.getChartConfig(chartConfig);
     this.myChartData = new Chart(this.canvasFillStyles, config);
+
+    this.myChartData.data.datasets[0].data = this.chartData;
+    this.myChartData.update();
   }
 
   private prepareChartId(): string {

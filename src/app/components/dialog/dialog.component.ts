@@ -1,4 +1,4 @@
-import {Component, ViewChild, ViewContainerRef} from '@angular/core';
+import {Component, Input, ViewChild, ViewContainerRef} from '@angular/core';
 
 import {Subject} from 'rxjs';
 
@@ -9,6 +9,10 @@ import {Subject} from 'rxjs';
 })
 export class DialogComponent {
 
+  @Input()
+  public dialogWidth: string;
+  @Input()
+  public dialogHeight: string;
   public onClose$: Subject<boolean> = new Subject<boolean>();
 
   @ViewChild('childComponentPlacement', {read: ViewContainerRef})
