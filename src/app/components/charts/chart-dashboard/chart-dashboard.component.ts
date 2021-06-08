@@ -75,29 +75,29 @@ export class ChartDashboardComponent extends Destroyable implements OnInit {
   private prepareChartsData(): void {
     this.chartService.fetchLinearChartData()
       .pipe(
-        takeUntil(this.destroyed$),
-        catchError(() => this.handleError(ChartType.LINE))
+        catchError(() => this.handleError(ChartType.LINE)),
+        takeUntil(this.destroyed$)
       )
       .subscribe((response: HttpResponse<number[]>) => this.handleSubscription(ChartType.LINE, response?.body));
 
     this.chartService.fetchBarChartData()
       .pipe(
-        takeUntil(this.destroyed$),
-        catchError(() => this.handleError(ChartType.PIE))
+        catchError(() => this.handleError(ChartType.PIE)),
+        takeUntil(this.destroyed$)
       )
       .subscribe((response: HttpResponse<number[]>) => this.handleSubscription(ChartType.PIE, response?.body));
 
     this.chartService.fetchPieChartData()
       .pipe(
-        takeUntil(this.destroyed$),
-        catchError(() => this.handleError(ChartType.BAR))
+        catchError(() => this.handleError(ChartType.BAR)),
+        takeUntil(this.destroyed$)
       )
       .subscribe((response: HttpResponse<number[]>) => this.handleSubscription(ChartType.BAR, response?.body));
 
     this.chartService.fetchDoughnutChartData()
       .pipe(
-        takeUntil(this.destroyed$),
-        catchError(() => this.handleError(ChartType.DOUGHNUT))
+        catchError(() => this.handleError(ChartType.DOUGHNUT)),
+        takeUntil(this.destroyed$)
       )
       .subscribe((response: HttpResponse<number[]>) => this.handleSubscription(ChartType.DOUGHNUT, response?.body));
   }
@@ -114,7 +114,7 @@ export class ChartDashboardComponent extends Destroyable implements OnInit {
         this.pieChartViewState = ViewState.ERROR;
         break;
       case ChartType.DOUGHNUT:
-        this.doughnutChartViewState= ViewState.ERROR;
+        this.doughnutChartViewState = ViewState.ERROR;
         break;
     }
 

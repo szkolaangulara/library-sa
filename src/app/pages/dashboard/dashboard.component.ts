@@ -37,11 +37,11 @@ export class DashboardComponent extends Destroyable implements OnInit {
   public ngOnInit() {
     this.carService.fetchTopSoldCars()
       .pipe(
-        takeUntil(this.destroyed$),
         catchError(() => {
           this.topCarsViewState = ViewState.ERROR;
           return EMPTY;
-        })
+        }),
+        takeUntil(this.destroyed$)
       )
       .subscribe((response: HttpResponse<Car[]>) => {
         this.cars = response.body;
@@ -50,11 +50,11 @@ export class DashboardComponent extends Destroyable implements OnInit {
 
     this.chartService.fetchLinearChartData()
       .pipe(
-        takeUntil(this.destroyed$),
         catchError(() => {
           this.lineViewState = ViewState.ERROR;
           return EMPTY;
-        })
+        }),
+        takeUntil(this.destroyed$)
       )
       .subscribe((response: HttpResponse<number[]>) => {
         this.lineChartData = response.body;
@@ -67,11 +67,11 @@ export class DashboardComponent extends Destroyable implements OnInit {
   private handleTableDataPreparation(): void {
     this.carService.fetchAllCars()
       .pipe(
-        takeUntil(this.destroyed$),
         catchError(() => {
           this.carsTableViewState = ViewState.ERROR;
           return EMPTY;
-        })
+        }),
+        takeUntil(this.destroyed$)
       )
       .subscribe((response: HttpResponse<Car[]>) => {
         this.carsTableData = this.prepareTableDataFromCarsData(response.body);
