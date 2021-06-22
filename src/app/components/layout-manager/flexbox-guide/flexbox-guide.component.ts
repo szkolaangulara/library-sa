@@ -50,8 +50,8 @@ export class FlexboxGuideComponent extends Destroyable implements OnInit {
         }),
         takeUntil(this.destroyed$)
       )
-      .subscribe((response: HttpResponse<Car[]>) => {
-        this.cars = response.body;
+      .subscribe((response: Car[]) => {
+        this.cars = response;
         this.viewState = ViewState.SUCCESS;
       });
   }

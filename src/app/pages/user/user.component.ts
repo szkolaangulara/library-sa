@@ -27,7 +27,7 @@ export class UserComponent extends Destroyable implements OnInit {
   public ngOnInit() {
     this.carService.fetchTopSoldCars()
       .pipe(takeUntil(this.destroyed$))
-      .subscribe((cars: HttpResponse<Car[]>) => this.cars = cars.body);
+      .subscribe((cars: Car[]) => this.cars = cars);
 
     this.handleTableDataPreparation();
   }
@@ -35,8 +35,8 @@ export class UserComponent extends Destroyable implements OnInit {
   private handleTableDataPreparation(): void {
     this.carService.fetchAllCars()
       .pipe(takeUntil(this.destroyed$))
-      .subscribe((cars: HttpResponse<Car[]>) => {
-        this.carsData = this.prepareTableDataFromCarsData(cars.body);
+      .subscribe((cars: Car[]) => {
+        this.carsData = this.prepareTableDataFromCarsData(cars);
 
         this.headers.push('Marka');
         this.headers.push('Model');

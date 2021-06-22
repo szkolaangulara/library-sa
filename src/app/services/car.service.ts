@@ -20,22 +20,12 @@ export class CarService {
     this.newCarAdded$.next();
   }
 
-  public fetchAllCars(): Observable<HttpResponse<Car[]>> {
+  public fetchAllCars(): Observable<Car[]> {
     return this.httpService.get<Car[]>('/cars/all')
-      .pipe(
-        delay(1000),
-        map((response: HttpResponse<Car[]>) => {
-          if (this.cars && this.cars.length > 0) {
-            return new HttpResponse<Car[]>({body: this.cars})
-          }
-
-          this.cars = response.body;
-          return response;
-        })
-      );
+      .pipe(delay(1000));
   }
 
-  public fetchTopSoldCars(): Observable<HttpResponse<Car[]>> {
+  public fetchTopSoldCars(): Observable<Car[]> {
     return this.httpService.get<Car[]>('/cars/top')
       .pipe(delay(2000));
   }

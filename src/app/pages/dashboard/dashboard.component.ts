@@ -7,7 +7,6 @@ import {catchError, takeUntil} from 'rxjs/operators';
 import {TableData} from '@app/models/table.interface';
 import {DialogService} from '@app/components/dialog/services/dialog.service';
 import {CarCardComponent} from '@app/components/car-card/car-card.component';
-import {HttpResponse} from '@angular/common/http';
 import {ViewState} from '@app/enums/view-state.enum';
 import {ChartService} from '@app/components/charts/services/chart.service';
 import {EMPTY} from 'rxjs';
@@ -43,8 +42,8 @@ export class DashboardComponent extends Destroyable implements OnInit {
         }),
         takeUntil(this.destroyed$)
       )
-      .subscribe((response: HttpResponse<Car[]>) => {
-        this.cars = response.body;
+      .subscribe((response: Car[]) => {
+        this.cars = response;
         this.topCarsViewState = ViewState.SUCCESS;
       });
 
@@ -56,8 +55,8 @@ export class DashboardComponent extends Destroyable implements OnInit {
         }),
         takeUntil(this.destroyed$)
       )
-      .subscribe((response: HttpResponse<number[]>) => {
-        this.lineChartData = response.body;
+      .subscribe((response: number[]) => {
+        this.lineChartData = response;
         this.lineViewState = ViewState.SUCCESS;
       });
 
@@ -73,8 +72,8 @@ export class DashboardComponent extends Destroyable implements OnInit {
         }),
         takeUntil(this.destroyed$)
       )
-      .subscribe((response: HttpResponse<Car[]>) => {
-        this.carsTableData = this.prepareTableDataFromCarsData(response.body);
+      .subscribe((response: Car[]) => {
+        this.carsTableData = this.prepareTableDataFromCarsData(response);
         this.headers.push('Marka');
         this.headers.push('Model');
         this.headers.push('Cena');

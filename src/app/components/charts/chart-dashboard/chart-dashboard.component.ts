@@ -4,7 +4,6 @@ import {ChartType} from '@app/enums/chart-type.enum';
 import {ChartService} from '@app/components/charts/services/chart.service';
 import {catchError, takeUntil} from 'rxjs/operators';
 import {Destroyable} from '@app/components/destroyable';
-import {HttpResponse} from '@angular/common/http';
 import {ViewState} from '@app/enums/view-state.enum';
 import {EMPTY, Observable} from 'rxjs';
 
@@ -78,28 +77,28 @@ export class ChartDashboardComponent extends Destroyable implements OnInit {
         catchError(() => this.handleError(ChartType.LINE)),
         takeUntil(this.destroyed$)
       )
-      .subscribe((response: HttpResponse<number[]>) => this.handleSubscription(ChartType.LINE, response?.body));
+      .subscribe((response: number[]) => this.handleSubscription(ChartType.LINE, response));
 
     this.chartService.fetchBarChartData()
       .pipe(
         catchError(() => this.handleError(ChartType.PIE)),
         takeUntil(this.destroyed$)
       )
-      .subscribe((response: HttpResponse<number[]>) => this.handleSubscription(ChartType.PIE, response?.body));
+      .subscribe((response: number[]) => this.handleSubscription(ChartType.PIE, response));
 
     this.chartService.fetchPieChartData()
       .pipe(
         catchError(() => this.handleError(ChartType.BAR)),
         takeUntil(this.destroyed$)
       )
-      .subscribe((response: HttpResponse<number[]>) => this.handleSubscription(ChartType.BAR, response?.body));
+      .subscribe((response: number[]) => this.handleSubscription(ChartType.BAR, response));
 
     this.chartService.fetchDoughnutChartData()
       .pipe(
         catchError(() => this.handleError(ChartType.DOUGHNUT)),
         takeUntil(this.destroyed$)
       )
-      .subscribe((response: HttpResponse<number[]>) => this.handleSubscription(ChartType.DOUGHNUT, response?.body));
+      .subscribe((response: number[]) => this.handleSubscription(ChartType.DOUGHNUT, response));
   }
 
   private handleError(chartType: ChartType): Observable<void> {

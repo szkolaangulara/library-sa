@@ -2,10 +2,9 @@ import {Injectable} from '@angular/core';
 
 import {hexToRgb} from '@app/helpers/color.helper';
 import {ChartType} from '@app/enums/chart-type.enum';
-import {Observable} from 'rxjs';
-import {HttpResponse} from '@angular/common/http';
+import {NEVER, Observable} from 'rxjs';
 import {HttpService} from '@app/services/http.service';
-import {delay} from 'rxjs/operators';
+import {catchError, delay} from 'rxjs/operators';
 
 export interface ChartConfig {
   chartType: ChartType;
@@ -26,22 +25,22 @@ export class ChartService {
   constructor(private httpService: HttpService) {
   }
 
-  public fetchLinearChartData(): Observable<HttpResponse<number[]>> {
+  public fetchLinearChartData(): Observable<number[]> {
     return this.httpService.get<number[]>('/chart/linear')
       .pipe(delay(2000));
   }
 
-  public fetchBarChartData(): Observable<HttpResponse<number[]>> {
+  public fetchBarChartData(): Observable<number[]> {
     return this.httpService.get<number[]>('/chart/bar')
       .pipe(delay(1000));
   }
 
-  public fetchPieChartData(): Observable<HttpResponse<number[]>> {
+  public fetchPieChartData(): Observable<number[]> {
     return this.httpService.get<number[]>('/chart/pie')
       .pipe(delay(2500));
   }
 
-  public fetchDoughnutChartData(): Observable<HttpResponse<number[]>> {
+  public fetchDoughnutChartData(): Observable<number[]> {
     return this.httpService.get<number[]>('/chart/doughnut')
       .pipe(delay(3500));
   }
@@ -99,7 +98,7 @@ export class ChartService {
         labels: chartConfig.labels,
         datasets: [{
           data: chartConfig.chartData,
-          backgroundColor: chartConfig.chartColors || chartConfig.color ||'#F8C471',
+          backgroundColor: chartConfig.chartColors || chartConfig.color || '#F8C471',
           borderColor: chartConfig.borderColors || chartConfig.color || '#F8C471',
           borderWidth: 1
         }]
