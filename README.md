@@ -53,7 +53,7 @@ Gdy dokonujemy subskrypcji w szablonie, najpierw powinniśmy przypisać wartoś�
 
 Następnie powinniśmy dokonać subskrybcji na tej zmiennej w szablonie poprzez korzystanie z wbudowanego pipe’a <b>async</b>.<br>
 ![Screenshot](src/assets/doc/GP-2-4.png)
-<br>Przykład w kodzie => [tasks.component.html](src/app/components/tasks/tasks.component.html) linia 26
+<br>Przykład w kodzie => [tasks.component.html](src/app/components/tasks/tasks.component.html) linia 1
 
 Wbudowany pipe <b>async</b> samodzielnie zadba o to, aby dokonać odsubskrybowania.
 
@@ -114,6 +114,8 @@ Kolejne ustawienie stanu na <b>LOADING</b> odbywa się podczas każdej zmiany fi
 <br>Przykład w kodzie => [flexbox-guide.component.ts](src/app/components/layout-manager/flexbox-guide/flexbox-guide.component.ts) linia 43
 
 Gdy wszystko pójdzie dobrze i przejdziemy do "happy path", czyli pobierzemy dane w ciele subscribe powinniśmy ustawić status na <b>SUCCESS</b>.<br><br>
+
+![Screenshot](src/assets/doc/GP-6-3.png)<br>
 
 ![Screenshot](src/assets/doc/GP-6-4.png)<br>
 Widok kontenera dla stanu <b>SUCCESS</b>
