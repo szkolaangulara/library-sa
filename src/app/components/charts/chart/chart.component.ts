@@ -4,7 +4,7 @@ import {
   Component,
   ElementRef,
   Input,
-  OnChanges,
+  OnChanges, OnInit,
   Renderer2,
   SimpleChanges,
   ViewChild
@@ -24,7 +24,7 @@ import {ViewState} from '@app/enums/view-state.enum';
   templateUrl: './chart.component.html',
   styleUrls: ['./chart.component.scss']
 })
-export class ChartComponent extends Destroyable implements AfterViewInit, OnChanges {
+export class ChartComponent extends Destroyable implements OnInit, AfterViewInit, OnChanges {
   private static instanceCounter: number = 0;
   @ViewChild('myCanvas')
   public canvasElement: ElementRef;
@@ -64,9 +64,6 @@ export class ChartComponent extends Destroyable implements AfterViewInit, OnChan
 
   constructor(private chartService: ChartService, private renderer: Renderer2, private changeDetectorRef: ChangeDetectorRef) {
     super();
-    forkJoin([this.chartRendered$, this.chartDataPrepared$])
-      .pipe(takeUntil(this.destroyed$))
-      .subscribe(() => this.renderPreparedChart());
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -74,6 +71,12 @@ export class ChartComponent extends Destroyable implements AfterViewInit, OnChan
       this.chartDataPrepared$.next(true);
       this.chartDataPrepared$.complete();
     }
+  }
+
+  public ngOnInit(): void {
+    forkJoin([this.chartRendered$, this.chartDataPrepared$])
+      .pipe(takeUntil(this.destroyed$))
+      .subscribe(() => this.renderPreparedChart());
   }
 
   public ngAfterViewInit(): void {

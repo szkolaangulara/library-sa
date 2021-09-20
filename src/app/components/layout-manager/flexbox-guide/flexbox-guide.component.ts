@@ -9,7 +9,6 @@ import {DialogService} from '@app/components/dialog/services/dialog.service';
 import {AddCarDialogFormComponent} from '@app/components/layout-manager/add-car-dialog-form/add-car-dialog-form.component';
 import {ViewState} from '@app/enums/view-state.enum';
 import {EMPTY} from 'rxjs';
-import {HttpResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-flexbox-guide',
@@ -42,6 +41,7 @@ export class FlexboxGuideComponent extends Destroyable implements OnInit {
 
   private prepareCars(): void {
     this.viewState = ViewState.LOADING;
+
     this.carService.fetchAllCars()
       .pipe(
         catchError(() => {
