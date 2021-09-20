@@ -51,7 +51,7 @@ Gdy dokonujemy subskrypcji w szablonie, najpierw powinniśmy przypisać wartoś�
 ![Screenshot](src/assets/doc/GP-2-3.png)
 <br>Przykład w kodzie => [tasks.component.ts](src/app/components/tasks/tasks.component.ts) linia 26
 
-Następnie powinniśmy dokonać subskrybcji na tej zmiennej w szablonie poprzez korzystanie z wbudowanego pipe’a <b>async</b>.
+Następnie powinniśmy dokonać subskrybcji na tej zmiennej w szablonie poprzez korzystanie z wbudowanego pipe’a <b>async</b>.<br>
 ![Screenshot](src/assets/doc/GP-2-4.png)
 <br>Przykład w kodzie => [tasks.component.html](src/app/components/tasks/tasks.component.html) linia 26
 
@@ -101,7 +101,7 @@ Pobranie danych dzieje się asynchronicznie oraz niejednokrotnie może trwać ja
 Gdy zapytania są małe i dostajemy odpowiedź niemal natychmiastowo problem nie jest widoczny na pierwszy rzut oka.<br><br> 
 Natomiast, gdy zapytanie trwa np. sekundę lub dwie, może się okazać, że potrzebujemy zarządzić stanem komponentu.<br><br>
 Najczęstsze stany jakie możesz spotkać to <b>SUCCESS</b> czyli, gdy udało się poprawnie pobrać dane, <b>ERROR</b>, gdy coś poszło nie tak i dane nie mogą być pobrane z jakiegoś powodu oraz <b>LOADING</b> podczas ładowania danych (które trwa np. dwie sekundy)<br><br>
-Stan danego kontenera (w tym przypadku mówimy o kontenerze, który wyświetla samochody) na samym początku powinien być ustawiony jako <b>LOADING</b>. 
+Stan danego kontenera (w tym przypadku mówimy o kontenerze, ka tej zmiennej w szablonie poprzez korzystanie z wbudowanetóry wyświetla samochody) na samym początku powinien być ustawiony jako <b>LOADING</b>. 
 
 ![Screenshot](src/assets/doc/GP-6-0.png)
 <br>Przykład w kodzie => [flexbox-guide.component.ts](src/app/components/layout-manager/flexbox-guide/flexbox-guide.component.ts) linia 24<br><br>
